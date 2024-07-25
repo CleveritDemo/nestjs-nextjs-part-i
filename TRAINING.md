@@ -258,7 +258,7 @@ response = requests.post(
 
 - Ask copilot how to create a README.md file with the developer docs of the project.
 
-> @workspace /new "create a README.md file with the developer docs of the project"
+> @workspace "create a README.md file with the developer docs of the project"
 
 ## Step 9: Export Chat to Developer Docs
 
