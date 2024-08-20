@@ -31,11 +31,20 @@
 
 
 ```
-@workspace /new "create a nestjs 9 application with one entity called products, this entity has 4 attributes, id: string, name: string, description: string, image: string, using typeorm 0.3.20 for persistence and Postgres adapter"
+@workspace /new "create a nestjs 9 application with one entity called products, this entity has 4 attributes, id: string, name: string, description: string, image: string, using @nestjs/typeorm for persistence and Postgres adapter"
 ```
 
 - Select this folder as your workspace to create the project.
 - Install the dependencies using `npm install`
+
+
+## Troubleshooting
+
+Sometimes copilot don't create the project with the correct dependencies, so you need to install them manually.
+
+```bash
+npm install @nestjs/typeorm class-validator
+```
 
 **GitHub Command**
 
