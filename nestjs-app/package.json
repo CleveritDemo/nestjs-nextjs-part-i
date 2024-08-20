@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^9.0.0",

@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { Product } from "./products/entities/product.entity";
+import { ProductsModule } from "./products/products.module";
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { Product } from "./products/entities/product.entity";
       }),
       inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([Product]), // Register the Product entity
+    TypeOrmModule.forFeature([Product]),
+    ProductsModule,
   ],
 })
 export class AppModule {}
