@@ -1,4 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
@@ -18,12 +22,25 @@ export class ProductsService {
   }
 
   async findOne(id: string): Promise<Product> {
-    return this.productRepository.findOne({
+    const product = await this.productRepository.findOne({
       where: { id },
     });
+    if (!product) {
+      throw new NotFoundException(`Product with ID ${id} not found`);
+    }
+    return product;
   }
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
+    const existingProduct = await this.productRepository.findOne({
+      where: { name: createProductDto.name },
+    });
+    if (existingProduct) {
+      throw new ConflictException(
+        `Product with name ${createProductDto.name} already exists`
+      );
+    }
+
     const product = new Product();
     product.id = uuidv4(); // Generate a UUID for the product ID
     product.name = createProductDto.name;
@@ -37,9 +54,7 @@ export class ProductsService {
     id: string,
     updateProductDto: UpdateProductDto
   ): Promise<Product> {
-    const product = await this.productRepository.findOne({
-      where: { id },
-    });
+    const product = await this.findOne(id); // Reuse findOne method to check existence
     product.name = updateProductDto.name;
     product.description = updateProductDto.description;
     product.image = updateProductDto.image;
@@ -48,6 +63,7 @@ export class ProductsService {
   }
 
   async remove(id: string): Promise<void> {
-    await this.productRepository.delete(id);
+    const product = await this.findOne(id); // Reuse findOne method to check existence
+    await this.productRepository.delete(product.id);
   }
 }

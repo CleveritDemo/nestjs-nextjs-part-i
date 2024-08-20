@@ -208,6 +208,10 @@ export class ProductsSeeder implements OnModuleInit {
 
 > create a UpdateProductDto that extends from #file:create-product.dto.ts and add id as a attribute
 
+### Add validation to Create, Update and Delete Methods
+
+- If product is not found return a 404 status code
+
 - Test the new methods using Insomnia or Postman
 
 ## Step 6: Create a Better description of the products using Azure Open AI
