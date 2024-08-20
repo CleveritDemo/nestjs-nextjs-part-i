@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
 import { Product } from "./entities/product.entity";
@@ -24,6 +25,7 @@ export class ProductsService {
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
     const product = new Product();
+    product.id = uuidv4(); // Generate a UUID for the product ID
     product.name = createProductDto.name;
     product.description = createProductDto.description;
     product.image = createProductDto.image;
