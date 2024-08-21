@@ -210,7 +210,9 @@ export class ProductsSeeder implements OnModuleInit {
 
 ### Add validation to Create, Update and Delete Methods
 
-- If product is not found return a 404 status code
+- If product is not found return a 404 status code, using copilot chat ask how to add validation to create method if a product have same name, and update and delete if product doesnt exist.
+
+> add validation to create method if a product have same name, and update and delete if product doesnt exist #file:products.service.ts 
 
 - Test the new methods using Insomnia or Postman
 
