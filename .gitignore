@@ -1,2 +1,32 @@
-nestjs-app/dist
-nestjs-app/node_modules
+# Node.js
+node_modules/
+
+# NestJS
+dist/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Build artifacts
+build/
+out/
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
