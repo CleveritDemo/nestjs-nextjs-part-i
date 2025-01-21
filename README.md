@@ -214,7 +214,7 @@ headers = {
 }
 
 params = {
-    'api-version': '2024-02-15-preview',
+    'api-version': '2024-08-01-preview',
 }
 
 json_data = {
@@ -237,7 +237,7 @@ json_data = {
 }
 
 response = requests.post(
-    'https://clever-dev-openai.openai.azure.com/openai/deployments/chat/chat/completions',
+    'https://clever-dev-openai.openai.azure.com/openai/deployments/chat4o/chat/completions',
     params=params,
     headers=headers,
     json=json_data,
